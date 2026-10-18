@@ -1,0 +1,1143 @@
+/* ==========================================================================
+   小满 · 餐饮 AI 智能经营助手  ——  客户解决方案演示主题
+   风格：商业解决方案 / SaaS / AI 产品
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --xm-ink: #0a1628;
+  --xm-ink-soft: #23344b;
+  --xm-muted: #64768e;
+  --xm-faint: #94a3b8;
+
+  --xm-line: #e3e9f0;
+  --xm-line-soft: #eef2f7;
+
+  --xm-bg: #ffffff;
+  --xm-soft: #f6f9fb;
+
+  --xm-brand: #0e9f6e;
+  --xm-brand-dark: #0a7d57;
+  --xm-brand-soft: #e9f7f1;
+  --xm-teal: #0ea5a5;
+  --xm-teal-soft: #e6f6f6;
+
+  --xm-amber: #d98207;
+  --xm-amber-soft: #fdf4e3;
+
+  --xm-shadow: 0 1px 2px rgba(10, 22, 40, 0.04), 0 14px 30px -20px rgba(10, 22, 40, 0.35);
+  --xm-font: 'Noto Sans SC', 'Inter', system-ui, -apple-system, 'PingFang SC',
+    'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+}
+
+/* ---------- 画布基础 ---------- */
+
+.slidev-layout {
+  position: relative;
+  padding: 2.1rem 3rem;
+  font-family: var(--xm-font);
+  color: var(--xm-ink);
+  background: var(--xm-bg);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.005em;
+}
+
+.slidev-layout h1 {
+  font-size: 1.9rem;
+  line-height: 1.25;
+  font-weight: 800;
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.01em;
+  color: var(--xm-ink);
+}
+
+/* 副标题删掉后，把正文整体往下留出一段呼吸距离 */
+.slidev-layout.default > h1 {
+  margin-bottom: 2.2rem;
+}
+
+.slidev-layout h1 + p {
+  font-size: 0.95rem;
+  opacity: 1;
+  color: var(--xm-muted);
+  margin: 0 0 1.1rem;
+  line-height: 1.55;
+}
+
+/* 副标题里的强调文字要保持可读的深色 */
+.slidev-layout h1 + p strong {
+  color: var(--xm-ink);
+  font-weight: 700;
+}
+
+.slidev-layout h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+.slidev-layout strong {
+  font-weight: 700;
+}
+
+.slidev-layout a {
+  text-decoration: none;
+}
+
+/* 无内边距布局（封面 / 结尾 / 全出血页） */
+.slidev-layout.xm-full {
+  padding: 0;
+}
+
+/* ---------- 通用卡片与标签 ---------- */
+
+.xm-card {
+  background: #fff;
+  border: 1px solid var(--xm-line);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: var(--xm-shadow);
+}
+
+.xm-soft {
+  background: var(--xm-soft);
+  border: 1px solid var(--xm-line);
+  border-radius: 16px;
+  padding: 22px 20px;
+}
+
+.xm-card-flat {
+  background: #fff;
+  border: 1px solid var(--xm-line);
+  border-radius: 16px;
+  padding: 22px 20px;
+}
+
+/* 技术选型页：正方形技术栈卡片 */
+.xm-tech-sq {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 26px;
+}
+
+.xm-tech-sq-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.xm-tech-sq-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.xm-tech-sq-bullets .b {
+  display: flex;
+  gap: 9px;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--xm-ink-soft);
+}
+
+.xm-tech-sq-bullets .b::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 2px;
+  background: var(--xm-brand);
+  margin-top: 9px;
+  flex: none;
+}
+
+.xm-tech-sq.xm-tech-sq-brand {
+  border-color: transparent;
+  background: linear-gradient(105deg, #0a7d57 0%, #0e9f6e 45%, #0ea5a5 100%);
+  color: #fff;
+  box-shadow: 0 20px 44px -24px rgba(14, 159, 110, 0.9);
+}
+
+.xm-tech-sq.xm-tech-sq-brand .xm-tech-sq-bullets .b {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.xm-tech-sq.xm-tech-sq-brand .xm-tech-sq-bullets .b::before {
+  background: #fff;
+}
+
+.xm-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.68rem;
+  border-radius: 999px;
+  border: 1px solid var(--xm-line);
+  background: #fff;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  color: var(--xm-ink-soft);
+  white-space: nowrap;
+}
+
+.xm-chip .xm-ico {
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
+
+.xm-chip-brand,
+.xm-chip-amber,
+.xm-chip-dark {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.68rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.xm-chip-brand {
+  background: var(--xm-brand-soft);
+  color: var(--xm-brand-dark);
+}
+
+.xm-chip-amber {
+  background: var(--xm-amber-soft);
+  color: var(--xm-amber);
+}
+
+.xm-chip-dark {
+  background: #0a1628;
+  color: #fff;
+}
+
+.xm-chip-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.68rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.78rem;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+/* 深色卡片（用于"现状"页的痛点陈述） */
+.xm-card-dark {
+  background: #0a1628;
+  border: 1px solid #0a1628;
+  border-radius: 16px;
+  padding: 22px 24px;
+  color: #fff;
+  box-shadow: 0 24px 50px -30px rgba(10, 22, 40, 0.95);
+}
+
+.xm-ico-ghost {
+  background: rgba(255, 255, 255, 0.1);
+  color: #2ee6a8;
+}
+
+/* 小标题 */
+.xm-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--xm-brand-dark);
+}
+
+.xm-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--xm-faint);
+}
+
+/* 图标块 */
+.xm-ico-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  font-size: 1.25rem;
+  flex: none;
+}
+
+.xm-ico-brand {
+  background: var(--xm-brand-soft);
+  color: var(--xm-brand-dark);
+}
+
+.xm-ico-amber {
+  background: var(--xm-amber-soft);
+  color: var(--xm-amber);
+}
+
+.xm-ico-slate {
+  background: var(--xm-soft);
+  color: var(--xm-muted);
+}
+
+/* 竖向下箭头 */
+.xm-arr-v {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  color: var(--xm-faint);
+  line-height: 1;
+}
+
+.xm-arr-v .xm-arr-line {
+  width: 1.5px;
+  height: 16px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.xm-arr-v .xm-arr-ico {
+  font-size: 1rem;
+  margin-bottom: -0.3rem;
+}
+
+/* ---------- 封面 ---------- */
+
+.xm-cover {
+  position: absolute;
+  inset: 0;
+  padding: 3.2rem 3.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  overflow: hidden;
+  background: radial-gradient(120% 130% at 8% 0%, #10314a 0%, #0a1628 45%, #070f1c 100%);
+}
+
+.xm-cover-glow {
+  position: absolute;
+  width: 620px;
+  height: 620px;
+  right: -180px;
+  top: -190px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14, 159, 110, 0.5) 0%, rgba(14, 165, 165, 0.16) 45%, transparent 70%);
+  filter: blur(6px);
+}
+
+.xm-cover-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(90% 80% at 60% 40%, #000 0%, transparent 75%);
+}
+
+.xm-cover-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.xm-cover-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.34rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+
+.xm-cover-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2ee6a8;
+  box-shadow: 0 0 0 4px rgba(46, 230, 168, 0.16);
+}
+
+.xm-cover h1 {
+  font-size: 4.4rem;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.55rem;
+  color: #fff;
+  background: linear-gradient(96deg, #ffffff 24%, #7ef0c4 78%, #4fd8e0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 提高优先级，覆盖主题的 `.slidev-layout h1 + p` */
+.xm-cover .xm-cover-sub {
+  font-size: 1.22rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 34em;
+  margin: 0 0 2rem;
+}
+
+.xm-cover-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+  max-width: 720px;
+}
+
+.xm-cover-pillars > div {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.045);
+  border-radius: 14px;
+  padding: 0.75rem 0.95rem;
+}
+
+.xm-cover-pillars .n {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #2ee6a8;
+  margin-bottom: 0.3rem;
+}
+
+.xm-cover-pillars b {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.xm-cover-foot {
+  position: absolute;
+  left: 3.6rem;
+  bottom: 1.6rem;
+  z-index: 1;
+  display: flex;
+  gap: 1.4rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.06em;
+}
+
+/* ---------- 结尾页 ---------- */
+
+.xm-end {
+  position: absolute;
+  inset: 0;
+  padding: 3rem 3.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  overflow: hidden;
+  background: radial-gradient(120% 130% at 85% 10%, #0d3a46 0%, #0a1628 48%, #070f1c 100%);
+}
+
+/* ---------- 分层架构图 ---------- */
+
+.xm-layer {
+  border: 1px solid var(--xm-line);
+  border-radius: 14px;
+  background: #fff;
+  padding: 24px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.xm-layer-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--xm-muted);
+  width: 112px;
+  flex: none;
+  letter-spacing: 0.04em;
+}
+
+.xm-layer-tight {
+  padding: 7px 16px;
+}
+
+/* 数据与知识支撑层：横向支撑，用虚线区别于流程层 */
+.xm-layer-support {
+  border-style: dashed;
+  border-color: #cbd5e1;
+  background: #fafbfc;
+}
+
+/* 能力链自上而下的下行箭头 */
+.xm-arrow-down {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15px;
+  font-size: 0.9rem;
+  color: var(--xm-faint);
+}
+
+/* 层与层之间的数据流向标注 */
+.xm-flux {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+  height: 11px;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--xm-faint);
+}
+
+.xm-layer-brand {
+  border-color: transparent;
+  background: linear-gradient(105deg, #0a7d57 0%, #0e9f6e 45%, #0ea5a5 100%);
+  color: #fff;
+  box-shadow: 0 20px 44px -24px rgba(14, 159, 110, 0.9);
+}
+
+.xm-layer-dark {
+  border-color: transparent;
+  background: #0a1628;
+  color: #fff;
+}
+
+.xm-layer-dark .xm-layer-title {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 分层内部的小方块 */
+.xm-cell {
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  background: var(--xm-soft);
+  border: 1px solid var(--xm-line);
+  color: var(--xm-ink-soft);
+  white-space: nowrap;
+}
+
+.xm-cell-glass {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.26);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---------- 流程图节点 ---------- */
+
+.xm-node {
+  border: 1px solid var(--xm-line);
+  border-radius: 14px;
+  background: #fff;
+  padding: 13px 12px;
+  text-align: center;
+  box-shadow: var(--xm-shadow);
+}
+
+/* 「系统很多」页：把六张来源卡片撑起来 */
+.xm-card-sys {
+  padding: 27px 12px;
+}
+
+.xm-node-idx {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 0.66rem;
+  font-weight: 700;
+  background: var(--xm-brand-soft);
+  color: var(--xm-brand-dark);
+  margin-bottom: 4px;
+}
+
+.xm-flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--xm-faint);
+  font-size: 1.1rem;
+  flex: none;
+}
+
+/* ---------- 对话气泡 ---------- */
+
+.xm-phone {
+  border: 1px solid var(--xm-line);
+  border-radius: 20px;
+  background: var(--xm-soft);
+  padding: 20px;
+}
+
+.xm-phone-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--xm-muted);
+  padding: 0 4px 10px;
+}
+
+.xm-bubble {
+  border-radius: 14px;
+  padding: 12px 15px;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  max-width: 82%;
+  box-shadow: 0 1px 2px rgba(10, 22, 40, 0.05);
+}
+
+.xm-bubble-user {
+  margin-left: auto;
+  background: #0a1628;
+  color: #fff;
+  border-bottom-right-radius: 5px;
+}
+
+.xm-bubble-ai {
+  background: #fff;
+  border: 1px solid var(--xm-line);
+  color: var(--xm-ink-soft);
+  border-bottom-left-radius: 5px;
+  max-width: 92%;
+}
+
+.xm-bubble-ai .xm-ai-name {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--xm-brand-dark);
+  margin-bottom: 3px;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- 表格 ---------- */
+
+.xm-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.86rem;
+  border: 1px solid var(--xm-line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.xm-table th {
+  background: var(--xm-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--xm-muted);
+  padding: 15px 14px;
+  text-align: left;
+}
+
+.xm-table td {
+  padding: 28px 14px;
+  border-top: 1px solid var(--xm-line-soft);
+  vertical-align: top;
+  line-height: 1.5;
+  color: var(--xm-ink-soft);
+}
+
+.xm-table td:first-child,
+.xm-table th:first-child {
+  color: var(--xm-faint);
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  width: 88px;
+}
+
+.xm-table .col-ls {
+  background: rgba(246, 249, 251, 0.6);
+}
+
+.xm-table .col-xm {
+  background: rgba(233, 247, 241, 0.55);
+}
+
+/* ---------- 权限矩阵（第 5 页）：行 = AI 角色，列 = 对话者身份 ---------- */
+
+.xm-matrix {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.82rem;
+  border: 1px solid var(--xm-line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.xm-matrix th,
+.xm-matrix td {
+  padding: 15px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-left: 1px solid var(--xm-line-soft);
+  border-top: 1px solid var(--xm-line-soft);
+}
+
+.xm-matrix thead th {
+  border-top: none;
+}
+
+.xm-matrix tr > *:first-child {
+  border-left: none;
+}
+
+.xm-matrix thead th {
+  background: var(--xm-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--xm-muted);
+  letter-spacing: 0.04em;
+}
+
+/* 左上角：把两个维度写在交叉点上 */
+.xm-matrix thead th.xm-matrix-corner {
+  background: #fff;
+  color: var(--xm-faint);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.xm-matrix tbody th {
+  background: var(--xm-brand-soft);
+  color: var(--xm-brand-dark);
+  font-size: 0.84rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.xm-matrix tbody th span {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #3f7a66;
+}
+
+/* 交叉点：这次回答能读到什么、能做什么 */
+.xm-matrix td {
+  color: var(--xm-ink-soft);
+  line-height: 1.55;
+}
+
+.xm-matrix td .xm-matrix-do {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.75rem;
+  color: var(--xm-brand-dark);
+}
+
+.xm-matrix td.xm-matrix-empty {
+  color: var(--xm-faint);
+}
+
+.xm-matrix td.xm-matrix-empty .xm-matrix-do {
+  color: var(--xm-faint);
+}
+
+/* ---------- 强调条 ---------- */
+
+.xm-banner {
+  border-radius: 14px;
+  background: #0a1628;
+  color: #fff;
+  padding: 12px 18px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.xm-banner-brand {
+  background: linear-gradient(105deg, #0a7d57 0%, #0e9f6e 50%, #0ea5a5 100%);
+  box-shadow: 0 18px 40px -24px rgba(14, 159, 110, 0.95);
+}
+
+.xm-banner strong {
+  font-weight: 700;
+}
+
+/* ---------- 工具类 ---------- */
+
+.xm-note {
+  font-size: 0.78rem;
+  color: var(--xm-muted);
+  line-height: 1.5;
+}
+
+.xm-divider {
+  height: 1px;
+  background: var(--xm-line);
+}
+
+/* ---------- 现状 / 方案 对照步骤（第 3 页） ---------- */
+
+.xm-step {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.82rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--xm-ink-soft);
+}
+
+.xm-step .i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 19px;
+  flex: none;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--xm-line);
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--xm-muted);
+}
+
+.xm-step-bad {
+  background: rgba(217, 130, 7, 0.09);
+  color: #9a5a03;
+  font-weight: 600;
+}
+
+.xm-step-bad .i {
+  background: #fff;
+  border-color: #f2ddb8;
+  color: var(--xm-amber);
+}
+
+.xm-step-good {
+  background: #fff;
+  color: var(--xm-brand-dark);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(10, 22, 40, 0.06);
+}
+
+.xm-step-good .i {
+  background: var(--xm-brand);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* ---------- 实施路径时间轴（第 10 页） ---------- */
+
+.xm-dot-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--xm-brand-soft);
+  color: var(--xm-brand-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.xm-dot-line {
+  flex: 1;
+  width: 1.5px;
+  min-height: 12px;
+  margin: 3px 0;
+  background: var(--xm-line);
+}
+
+/* ---------- 树形图（AI 系统设计页） ---------- */
+
+.xm-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* 入口：AI 调度器 */
+.xm-tree-entry {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding: 8px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--xm-line);
+  background: var(--xm-soft);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--xm-ink-soft);
+}
+
+.xm-tree-entry span {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--xm-muted);
+}
+
+/* 连接线 */
+.xm-tree-stem {
+  width: 1.5px;
+  height: 14px;
+  background: #cbd5e1;
+}
+
+/* 唯一的主干节点 */
+.xm-tree-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 52px;
+  border-radius: 14px;
+  background: linear-gradient(105deg, #0a7d57 0%, #0e9f6e 45%, #0ea5a5 100%);
+  color: #fff;
+  box-shadow: 0 20px 44px -24px rgba(14, 159, 110, 0.9);
+}
+
+.xm-tree-root b {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.xm-tree-root span {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 分支：每个叶子带一段横向连线 + 一段竖向短线 */
+.xm-tree-leaves {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  width: 100%;
+}
+
+.xm-tree-leaf {
+  position: relative;
+  flex: 1;
+  padding-top: 14px;
+}
+
+.xm-tree-leaf::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1.5px;
+  height: 14px;
+  background: #cbd5e1;
+}
+
+.xm-tree-leaf::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -7px;
+  right: -7px;
+  height: 1.5px;
+  background: #cbd5e1;
+}
+
+.xm-tree-leaf:first-child::after { left: 50%; }
+.xm-tree-leaf:last-child::after { right: 50%; }
+
+.xm-tree-leaf > .xm-card-flat {
+  height: 100%;
+  padding: 12px 16px;
+}
+
+.xm-leaf-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* 数据进出：本页只保留"进"和"出"两个方向，数据侧不展开 */
+.xm-flow-io {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 9px 20px;
+  border-radius: 14px;
+  border: 1px dashed #cbd5e1;
+  background: #fafbfc;
+  font-size: 0.8rem;
+  color: var(--xm-muted);
+}
+
+.xm-flow-io b {
+  color: var(--xm-ink-soft);
+  font-weight: 700;
+}
+
+.xm-flow-io [class^='i-carbon-'] {
+  font-size: 0.95rem;
+  color: var(--xm-faint);
+}
+
+/* ---------- 报价页 ---------- */
+
+/* 价格主体 */
+.xm-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 18px 24px;
+  border-radius: 16px;
+  background: linear-gradient(105deg, #0a7d57 0%, #0e9f6e 45%, #0ea5a5 100%);
+  color: #fff;
+  box-shadow: 0 20px 44px -24px rgba(14, 159, 110, 0.9);
+}
+
+.xm-price .xm-label {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.xm-price-num {
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.xm-price-num span {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+.xm-price-num i {
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.82);
+  margin-left: 4px;
+}
+
+.xm-price-note {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+/* 交付内容清单 */
+.xm-deliver {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.84rem;
+  color: var(--xm-muted);
+  line-height: 1.5;
+}
+
+.xm-deliver > [class^='i-carbon-'] {
+  font-size: 0.95rem;
+  color: var(--xm-brand);
+  flex: none;
+  transform: translateY(1px);
+}
+
+.xm-deliver b {
+  width: 150px;
+  flex: none;
+  font-weight: 700;
+  color: var(--xm-ink);
+}
+
+/* 横版价格条：价在左，交付口径在右 */
+.xm-price-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 13px 28px;
+}
+
+.xm-price-row .xm-price-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  text-align: right;
+}
+
+/* 计价依据 */
+.xm-formula {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--xm-line);
+  background: var(--xm-soft);
+}
+
+.xm-formula-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.77rem;
+  line-height: 1.45;
+  color: var(--xm-muted);
+  letter-spacing: 0.01em;
+}
+
+.xm-formula-row em {
+  font-style: normal;
+  color: var(--xm-ink-soft);
+}
+
+.xm-formula-row b {
+  font-weight: 700;
+  color: var(--xm-brand-dark);
+}
+
+.xm-formula-row .xm-formula-eq {
+  color: var(--xm-ink);
+  font-weight: 600;
+}
+
+/* 打印 / 导出为 PDF 时保持背景色 */
+@media print {
+  .xm-cover,
+  .xm-end,
+  .xm-layer-brand {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
